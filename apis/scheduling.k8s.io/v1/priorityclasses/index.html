@@ -1,0 +1,34 @@
+{
+  "kind": "PriorityClassList",
+  "apiVersion": "scheduling.k8s.io/v1",
+  "metadata": {
+    "selfLink": "/apis/scheduling.k8s.io/v1/priorityclasses",
+    "resourceVersion": "400152081"
+  },
+  "items": [
+    {
+      "metadata": {
+        "name": "system-cluster-critical",
+        "selfLink": "/apis/scheduling.k8s.io/v1/priorityclasses/system-cluster-critical",
+        "uid": "c8aabdc5-5c76-473d-86b4-41c6bdcb9cbb",
+        "resourceVersion": "49",
+        "generation": 1,
+        "creationTimestamp": "2020-08-04T21:09:02Z"
+      },
+      "value": 2000000000,
+      "description": "Used for system critical pods that must run in the cluster, but can be moved to another node if necessary."
+    },
+    {
+      "metadata": {
+        "name": "system-node-critical",
+        "selfLink": "/apis/scheduling.k8s.io/v1/priorityclasses/system-node-critical",
+        "uid": "5928294c-d1c1-47e8-a4c9-6e0a948240d9",
+        "resourceVersion": "48",
+        "generation": 1,
+        "creationTimestamp": "2020-08-04T21:09:02Z"
+      },
+      "value": 2000001000,
+      "description": "Used for system critical pods that must not be moved from their current node."
+    }
+  ]
+}

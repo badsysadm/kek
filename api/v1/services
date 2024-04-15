@@ -1,0 +1,46 @@
+{
+  "kind": "ServiceList",
+  "apiVersion": "v1",
+  "metadata": {
+    "selfLink": "/api/v1/services",
+    "resourceVersion": "400184203"
+  },
+  "items": [
+      {
+      "metadata": {
+        "name": "test-clojure",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/argocd/services/argocd-metrics",
+        "uid": "e2ccaf3b-cf23-4668-b819-430f9fab9f3c",
+        "resourceVersion": "123202926",
+        "creationTimestamp": "2021-09-30T07:56:33Z",
+        "labels": {
+          "app.kubernetes.io/component": "metrics",
+          "app.kubernetes.io/name": "argocd-metrics",
+          "app.kubernetes.io/part-of": "argocd"
+        }
+      },
+      "spec": {
+        "ports": [
+          {
+            "name": "metrics",
+            "protocol": "TCP",
+            "port": 8082,
+            "targetPort": 8082
+          }
+        ],
+        "selector": {
+          "app.kubernetes.io/name": "argocd-application-controller"
+        },
+        "clusterIP": "10.42.15.160",
+        "type": "ClusterIP",
+        "sessionAffinity": "None"
+      },
+      "status": {
+        "loadBalancer": {
+          
+        }
+      }
+    }
+    ]
+  }

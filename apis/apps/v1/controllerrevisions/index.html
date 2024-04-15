@@ -1,0 +1,256 @@
+{
+  "kind": "ControllerRevisionList",
+  "apiVersion": "apps/v1",
+  "metadata": {
+    "selfLink": "/apis/apps/v1/controllerrevisions",
+    "resourceVersion": "400151958"
+  },
+  "items": [
+    {
+      "metadata": {
+        "name": "argocd-application-controller-59cb9d8f64",
+        "namespace": "argocd",
+        "selfLink": "/apis/apps/v1/namespaces/argocd/controllerrevisions/argocd-application-controller-59cb9d8f64",
+        "uid": "84800c01-1a7f-471f-bef5-5f23368d2dcf",
+        "resourceVersion": "123202975",
+        "creationTimestamp": "2021-09-30T07:56:34Z",
+        "labels": {
+          "app.kubernetes.io/name": "argocd-application-controller",
+          "controller.kubernetes.io/hash": "59cb9d8f64"
+        },
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"StatefulSet\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/component\":\"application-controller\",\"app.kubernetes.io/name\":\"argocd-application-controller\",\"app.kubernetes.io/part-of\":\"argocd\"},\"name\":\"argocd-application-controller\",\"namespace\":\"argocd\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app.kubernetes.io/name\":\"argocd-application-controller\"}},\"serviceName\":\"argocd-application-controller\",\"template\":{\"metadata\":{\"labels\":{\"app.kubernetes.io/name\":\"argocd-application-controller\"}},\"spec\":{\"affinity\":{\"podAntiAffinity\":{\"preferredDuringSchedulingIgnoredDuringExecution\":[{\"podAffinityTerm\":{\"labelSelector\":{\"matchLabels\":{\"app.kubernetes.io/name\":\"argocd-application-controller\"}},\"topologyKey\":\"kubernetes.io/hostname\"},\"weight\":100},{\"podAffinityTerm\":{\"labelSelector\":{\"matchLabels\":{\"app.kubernetes.io/part-of\":\"argocd\"}},\"topologyKey\":\"kubernetes.io/hostname\"},\"weight\":5}]}},\"containers\":[{\"command\":[\"argocd-application-controller\"],\"env\":[{\"name\":\"ARGOCD_RECONCILIATION_TIMEOUT\",\"valueFrom\":{\"configMapKeyRef\":{\"key\":\"timeout.reconciliation\",\"name\":\"argocd-cm\",\"optional\":true}}},{\"name\":\"ARGOCD_APPLICATION_CONTROLLER_REPO_SERVER\",\"valueFrom\":{\"configMapKeyRef\":{\"key\":\"repo.server\",\"name\":\"argocd-cmd-params-cm\",\"optional\":true}}},{\"name\":\"ARGOCD_APPLICATION_CONTROLLER_REPO_SERVER_TIMEOUT_SECONDS\",\"valueFrom\":{\"configMapKeyRef\":{\"key\":\"controller.repo.server.timeout.seconds\",\"name\":\"argocd-cmd-params-cm\",\"optional\":true}}},{\"name\":\"ARGOCD_APPLICATION_CONTROLLER_STATUS_PROCESSORS\",\"valueFrom\":{\"configMapKeyRef\":{\"key\":\"controller.status.processors\",\"name\":\"argocd-cmd-params-cm\",\"optional\":true}}},{\"name\":\"ARGOCD_APPLICATION_CONTROLLER_OPERATION_PROCESSORS\",\"valueFrom\":{\"configMapKeyRef\":{\"key\":\"controller.operation.processors\",\"name\":\"argocd-cmd-params-cm\",\"optional\":true}}},{\"name\":\"ARGOCD_APPLICATION_CONTROLLER_LOGFORMAT\",\"valueFrom\":{\"configMapKeyRef\":{\"key\":\"controller.log.format\",\"name\":\"argocd-cmd-params-cm\",\"optional\":true}}},{\"name\":\"ARGOCD_APPLICATION_CONTROLLER_LOGLEVEL\",\"valueFrom\":{\"configMapKeyRef\":{\"key\":\"controller.log.level\",\"name\":\"argocd-cmd-params-cm\",\"optional\":true}}},{\"name\":\"ARGOCD_APPLICATION_CONTROLLER_METRICS_CACHE_EXPIRATION\",\"valueFrom\":{\"configMapKeyRef\":{\"key\":\"controller.metrics.cache.expiration\",\"name\":\"argocd-cmd-params-cm\",\"optional\":true}}},{\"name\":\"ARGOCD_APPLICATION_CONTROLLER_SELF_HEAL_TIMEOUT_SECONDS\",\"valueFrom\":{\"configMapKeyRef\":{\"key\":\"controller.self.heal.timeout.seconds\",\"name\":\"argocd-cmd-params-cm\",\"optional\":true}}},{\"name\":\"ARGOCD_APPLICATION_CONTROLLER_REPO_SERVER_PLAINTEXT\",\"valueFrom\":{\"configMapKeyRef\":{\"key\":\"controller.repo.server.plaintext\",\"name\":\"argocd-cmd-params-cm\",\"optional\":true}}},{\"name\":\"ARGOCD_APPLICATION_CONTROLLER_REPO_SERVER_STRICT_TLS\",\"valueFrom\":{\"configMapKeyRef\":{\"key\":\"controller.repo.server.strict.tls\",\"name\":\"argocd-cmd-params-cm\",\"optional\":true}}},{\"name\":\"ARGOCD_APP_STATE_CACHE_EXPIRATION\",\"valueFrom\":{\"configMapKeyRef\":{\"key\":\"controller.app.state.cache.expiration\",\"name\":\"argocd-cmd-params-cm\",\"optional\":true}}},{\"name\":\"REDIS_SERVER\",\"valueFrom\":{\"configMapKeyRef\":{\"key\":\"redis.server\",\"name\":\"argocd-cmd-params-cm\",\"optional\":true}}},{\"name\":\"REDISDB\",\"valueFrom\":{\"configMapKeyRef\":{\"key\":\"redis.db\",\"name\":\"argocd-cmd-params-cm\",\"optional\":true}}},{\"name\":\"ARGOCD_DEFAULT_CACHE_EXPIRATION\",\"valueFrom\":{\"configMapKeyRef\":{\"key\":\"controller.default.cache.expiration\",\"name\":\"argocd-cmd-params-cm\",\"optional\":true}}}],\"image\":\"quay.io/argoproj/argocd:v2.1.3\",\"imagePullPolicy\":\"Always\",\"livenessProbe\":{\"httpGet\":{\"path\":\"/healthz\",\"port\":8082},\"initialDelaySeconds\":5,\"periodSeconds\":10},\"name\":\"argocd-application-controller\",\"ports\":[{\"containerPort\":8082}],\"readinessProbe\":{\"httpGet\":{\"path\":\"/healthz\",\"port\":8082},\"initialDelaySeconds\":5,\"periodSeconds\":10},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"all\"]},\"readOnlyRootFilesystem\":true,\"runAsNonRoot\":true},\"volumeMounts\":[{\"mountPath\":\"/app/config/controller/tls\",\"name\":\"argocd-repo-server-tls\"},{\"mountPath\":\"/home/argocd\",\"name\":\"argocd-home\"}],\"workingDir\":\"/home/argocd\"}],\"serviceAccountName\":\"argocd-application-controller\",\"volumes\":[{\"emptyDir\":{},\"name\":\"argocd-home\"},{\"name\":\"argocd-repo-server-tls\",\"secret\":{\"items\":[{\"key\":\"tls.crt\",\"path\":\"tls.crt\"},{\"key\":\"tls.key\",\"path\":\"tls.key\"},{\"key\":\"ca.crt\",\"path\":\"ca.crt\"}],\"optional\":true,\"secretName\":\"argocd-repo-server-tls\"}}]}}}}\n"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "name": "argocd-application-controller",
+            "uid": "dc2fb055-62a7-4a1c-a2f9-1931aa0ee197",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "data": {"spec":{"template":{"$patch":"replace","metadata":{"creationTimestamp":null,"labels":{"app.kubernetes.io/name":"argocd-application-controller"}},"spec":{"affinity":{"podAntiAffinity":{"preferredDuringSchedulingIgnoredDuringExecution":[{"podAffinityTerm":{"labelSelector":{"matchLabels":{"app.kubernetes.io/name":"argocd-application-controller"}},"topologyKey":"kubernetes.io/hostname"},"weight":100},{"podAffinityTerm":{"labelSelector":{"matchLabels":{"app.kubernetes.io/part-of":"argocd"}},"topologyKey":"kubernetes.io/hostname"},"weight":5}]}},"containers":[{"command":["argocd-application-controller"],"env":[{"name":"ARGOCD_RECONCILIATION_TIMEOUT","valueFrom":{"configMapKeyRef":{"key":"timeout.reconciliation","name":"argocd-cm","optional":true}}},{"name":"ARGOCD_APPLICATION_CONTROLLER_REPO_SERVER","valueFrom":{"configMapKeyRef":{"key":"repo.server","name":"argocd-cmd-params-cm","optional":true}}},{"name":"ARGOCD_APPLICATION_CONTROLLER_REPO_SERVER_TIMEOUT_SECONDS","valueFrom":{"configMapKeyRef":{"key":"controller.repo.server.timeout.seconds","name":"argocd-cmd-params-cm","optional":true}}},{"name":"ARGOCD_APPLICATION_CONTROLLER_STATUS_PROCESSORS","valueFrom":{"configMapKeyRef":{"key":"controller.status.processors","name":"argocd-cmd-params-cm","optional":true}}},{"name":"ARGOCD_APPLICATION_CONTROLLER_OPERATION_PROCESSORS","valueFrom":{"configMapKeyRef":{"key":"controller.operation.processors","name":"argocd-cmd-params-cm","optional":true}}},{"name":"ARGOCD_APPLICATION_CONTROLLER_LOGFORMAT","valueFrom":{"configMapKeyRef":{"key":"controller.log.format","name":"argocd-cmd-params-cm","optional":true}}},{"name":"ARGOCD_APPLICATION_CONTROLLER_LOGLEVEL","valueFrom":{"configMapKeyRef":{"key":"controller.log.level","name":"argocd-cmd-params-cm","optional":true}}},{"name":"ARGOCD_APPLICATION_CONTROLLER_METRICS_CACHE_EXPIRATION","valueFrom":{"configMapKeyRef":{"key":"controller.metrics.cache.expiration","name":"argocd-cmd-params-cm","optional":true}}},{"name":"ARGOCD_APPLICATION_CONTROLLER_SELF_HEAL_TIMEOUT_SECONDS","valueFrom":{"configMapKeyRef":{"key":"controller.self.heal.timeout.seconds","name":"argocd-cmd-params-cm","optional":true}}},{"name":"ARGOCD_APPLICATION_CONTROLLER_REPO_SERVER_PLAINTEXT","valueFrom":{"configMapKeyRef":{"key":"controller.repo.server.plaintext","name":"argocd-cmd-params-cm","optional":true}}},{"name":"ARGOCD_APPLICATION_CONTROLLER_REPO_SERVER_STRICT_TLS","valueFrom":{"configMapKeyRef":{"key":"controller.repo.server.strict.tls","name":"argocd-cmd-params-cm","optional":true}}},{"name":"ARGOCD_APP_STATE_CACHE_EXPIRATION","valueFrom":{"configMapKeyRef":{"key":"controller.app.state.cache.expiration","name":"argocd-cmd-params-cm","optional":true}}},{"name":"REDIS_SERVER","valueFrom":{"configMapKeyRef":{"key":"redis.server","name":"argocd-cmd-params-cm","optional":true}}},{"name":"REDISDB","valueFrom":{"configMapKeyRef":{"key":"redis.db","name":"argocd-cmd-params-cm","optional":true}}},{"name":"ARGOCD_DEFAULT_CACHE_EXPIRATION","valueFrom":{"configMapKeyRef":{"key":"controller.default.cache.expiration","name":"argocd-cmd-params-cm","optional":true}}}],"image":"quay.io/argoproj/argocd:v2.1.3","imagePullPolicy":"Always","livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/healthz","port":8082,"scheme":"HTTP"},"initialDelaySeconds":5,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":1},"name":"argocd-application-controller","ports":[{"containerPort":8082,"protocol":"TCP"}],"readinessProbe":{"failureThreshold":3,"httpGet":{"path":"/healthz","port":8082,"scheme":"HTTP"},"initialDelaySeconds":5,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":1},"resources":{},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["all"]},"readOnlyRootFilesystem":true,"runAsNonRoot":true},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","volumeMounts":[{"mountPath":"/app/config/controller/tls","name":"argocd-repo-server-tls"},{"mountPath":"/home/argocd","name":"argocd-home"}],"workingDir":"/home/argocd"}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"serviceAccount":"argocd-application-controller","serviceAccountName":"argocd-application-controller","terminationGracePeriodSeconds":30,"volumes":[{"emptyDir":{},"name":"argocd-home"},{"name":"argocd-repo-server-tls","secret":{"defaultMode":420,"items":[{"key":"tls.crt","path":"tls.crt"},{"key":"tls.key","path":"tls.key"},{"key":"ca.crt","path":"ca.crt"}],"optional":true,"secretName":"argocd-repo-server-tls"}}]}}}},
+      "revision": 1
+    },
+    {
+      "metadata": {
+        "name": "ingress-nginx-ingress-controller-6bdf6879b5",
+        "namespace": "ingress",
+        "selfLink": "/apis/apps/v1/namespaces/ingress/controllerrevisions/ingress-nginx-ingress-controller-6bdf6879b5",
+        "uid": "c3641ce1-17fa-4885-abfa-a08a0480821f",
+        "resourceVersion": "23406543",
+        "creationTimestamp": "2020-11-04T09:28:19Z",
+        "labels": {
+          "app": "nginx-ingress",
+          "app.kubernetes.io/component": "controller",
+          "component": "controller",
+          "controller-revision-hash": "6bdf6879b5",
+          "release": "ingress"
+        },
+        "annotations": {
+          "deprecated.daemonset.template.generation": "5",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"DaemonSet\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"nginx-ingress\",\"app.kubernetes.io/component\":\"controller\",\"chart\":\"nginx-ingress-1.41.2\",\"heritage\":\"Helm\",\"release\":\"ingress\"},\"name\":\"ingress-nginx-ingress-controller\",\"namespace\":\"ingress\"},\"spec\":{\"minReadySeconds\":0,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"app\":\"nginx-ingress\",\"release\":\"ingress\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"nginx-ingress\",\"app.kubernetes.io/component\":\"controller\",\"component\":\"controller\",\"release\":\"ingress\"}},\"spec\":{\"containers\":[{\"args\":[\"/nginx-ingress-controller\",\"--default-backend-service=ingress/ingress-nginx-ingress-default-backend\",\"--election-id=ingress-controller-leader\",\"--ingress-class=nginx\",\"--configmap=ingress/ingress-nginx-ingress-controller\"],\"env\":[{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"POD_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}}],\"image\":\"us.gcr.io/k8s-artifacts-prod/ingress-nginx/controller:v0.34.1\",\"imagePullPolicy\":\"IfNotPresent\",\"livenessProbe\":{\"failureThreshold\":3,\"httpGet\":{\"path\":\"/healthz\",\"port\":10254,\"scheme\":\"HTTP\"},\"initialDelaySeconds\":10,\"periodSeconds\":10,\"successThreshold\":1,\"timeoutSeconds\":1},\"name\":\"nginx-ingress-controller\",\"ports\":[{\"containerPort\":80,\"name\":\"http\",\"protocol\":\"TCP\"},{\"containerPort\":443,\"name\":\"https\",\"protocol\":\"TCP\"},{\"containerPort\":10254,\"name\":\"metrics\",\"protocol\":\"TCP\"}],\"readinessProbe\":{\"failureThreshold\":3,\"httpGet\":{\"path\":\"/healthz\",\"port\":10254,\"scheme\":\"HTTP\"},\"initialDelaySeconds\":10,\"periodSeconds\":10,\"successThreshold\":1,\"timeoutSeconds\":1},\"resources\":{},\"securityContext\":{\"allowPrivilegeEscalation\":true,\"capabilities\":{\"add\":[\"NET_BIND_SERVICE\"],\"drop\":[\"ALL\"]},\"runAsUser\":101}}],\"dnsPolicy\":\"ClusterFirst\",\"hostNetwork\":true,\"serviceAccountName\":\"ingress-nginx-ingress\",\"terminationGracePeriodSeconds\":60}},\"updateStrategy\":{}}}\n"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "DaemonSet",
+            "name": "ingress-nginx-ingress-controller",
+            "uid": "5538a96e-fb21-4e95-9aec-41a3685dec04",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "data": {"spec":{"template":{"$patch":"replace","metadata":{"creationTimestamp":null,"labels":{"app":"nginx-ingress","app.kubernetes.io/component":"controller","component":"controller","release":"ingress"}},"spec":{"containers":[{"args":["/nginx-ingress-controller","--default-backend-service=ingress/ingress-nginx-ingress-default-backend","--election-id=ingress-controller-leader","--ingress-class=nginx","--configmap=ingress/ingress-nginx-ingress-controller"],"env":[{"name":"POD_NAME","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.name"}}},{"name":"POD_NAMESPACE","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.namespace"}}}],"image":"us.gcr.io/k8s-artifacts-prod/ingress-nginx/controller:v0.40.0","imagePullPolicy":"IfNotPresent","livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/healthz","port":10254,"scheme":"HTTP"},"initialDelaySeconds":10,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":1},"name":"nginx-ingress-controller","ports":[{"containerPort":80,"hostPort":80,"name":"http","protocol":"TCP"},{"containerPort":443,"hostPort":443,"name":"https","protocol":"TCP"},{"containerPort":10254,"hostPort":10254,"name":"metrics","protocol":"TCP"}],"readinessProbe":{"failureThreshold":3,"httpGet":{"path":"/healthz","port":10254,"scheme":"HTTP"},"initialDelaySeconds":10,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":1},"resources":{},"securityContext":{"allowPrivilegeEscalation":true,"capabilities":{"add":["NET_BIND_SERVICE"],"drop":["ALL"]},"runAsUser":101},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","hostNetwork":true,"restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"serviceAccount":"ingress-nginx-ingress","serviceAccountName":"ingress-nginx-ingress","terminationGracePeriodSeconds":60}}}},
+      "revision": 5
+    },
+    {
+      "metadata": {
+        "name": "ingress-nginx-ingress-controller-6dbdb6dd86",
+        "namespace": "ingress",
+        "selfLink": "/apis/apps/v1/namespaces/ingress/controllerrevisions/ingress-nginx-ingress-controller-6dbdb6dd86",
+        "uid": "4a5b11d4-c381-4fe8-9dd1-d6b3e529932f",
+        "resourceVersion": "23404643",
+        "creationTimestamp": "2020-11-04T08:33:06Z",
+        "labels": {
+          "app": "nginx-ingress",
+          "app.kubernetes.io/component": "controller",
+          "component": "controller",
+          "controller-revision-hash": "6dbdb6dd86",
+          "release": "ingress"
+        },
+        "annotations": {
+          "deprecated.daemonset.template.generation": "2",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"DaemonSet\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"nginx-ingress\",\"app.kubernetes.io/component\":\"controller\",\"chart\":\"nginx-ingress-1.41.2\",\"heritage\":\"Helm\",\"release\":\"ingress\"},\"name\":\"ingress-nginx-ingress-controller\",\"namespace\":\"ingress\"},\"spec\":{\"minReadySeconds\":0,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"app\":\"nginx-ingress\",\"release\":\"ingress\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"nginx-ingress\",\"app.kubernetes.io/component\":\"controller\",\"component\":\"controller\",\"release\":\"ingress\"}},\"spec\":{\"containers\":[{\"args\":[\"/nginx-ingress-controller\",\"--default-backend-service=ingress/ingress-nginx-ingress-default-backend\",\"--election-id=ingress-controller-leader\",\"--ingress-class=nginx\",\"--configmap=ingress/ingress-nginx-ingress-controller\"],\"env\":[{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"POD_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}}],\"image\":\"us.gcr.io/k8s-artifacts-prod/ingress-nginx/controller:v0.34.1\",\"imagePullPolicy\":\"IfNotPresent\",\"livenessProbe\":{\"failureThreshold\":3,\"httpGet\":{\"path\":\"/healthz\",\"port\":10254,\"scheme\":\"HTTP\"},\"initialDelaySeconds\":10,\"periodSeconds\":10,\"successThreshold\":1,\"timeoutSeconds\":1},\"name\":\"nginx-ingress-controller\",\"ports\":[{\"containerPort\":80,\"name\":\"http\",\"protocol\":\"TCP\"},{\"containerPort\":443,\"name\":\"https\",\"protocol\":\"TCP\"},{\"containerPort\":10254,\"name\":\"metrics\",\"protocol\":\"TCP\"}],\"readinessProbe\":{\"failureThreshold\":3,\"httpGet\":{\"path\":\"/healthz\",\"port\":10254,\"scheme\":\"HTTP\"},\"initialDelaySeconds\":10,\"periodSeconds\":10,\"successThreshold\":1,\"timeoutSeconds\":1},\"resources\":{},\"securityContext\":{\"allowPrivilegeEscalation\":true,\"capabilities\":{\"add\":[\"NET_BIND_SERVICE\"],\"drop\":[\"ALL\"]},\"runAsUser\":101}}],\"dnsPolicy\":\"ClusterFirst\",\"hostNetwork\":true,\"serviceAccountName\":\"ingress-nginx-ingress\",\"terminationGracePeriodSeconds\":60}},\"updateStrategy\":{}}}\n"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "DaemonSet",
+            "name": "ingress-nginx-ingress-controller",
+            "uid": "5538a96e-fb21-4e95-9aec-41a3685dec04",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "data": {"spec":{"template":{"$patch":"replace","metadata":{"creationTimestamp":null,"labels":{"app":"nginx-ingress","app.kubernetes.io/component":"controller","component":"controller","release":"ingress"}},"spec":{"containers":[{"args":["/nginx-ingress-controller","--default-backend-service=ingress/ingress-nginx-ingress-default-backend","--election-id=ingress-controller-leader","--ingress-class=nginx","--configmap=ingress/ingress-nginx-ingress-controller"],"env":[{"name":"POD_NAME","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.name"}}},{"name":"POD_NAMESPACE","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.namespace"}}}],"image":"us.gcr.io/k8s-artifacts-prod/ingress-nginx/controller:v0.41.0","imagePullPolicy":"IfNotPresent","livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/healthz","port":10254,"scheme":"HTTP"},"initialDelaySeconds":10,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":1},"name":"nginx-ingress-controller","ports":[{"containerPort":80,"hostPort":80,"name":"http","protocol":"TCP"},{"containerPort":443,"hostPort":443,"name":"https","protocol":"TCP"},{"containerPort":10254,"hostPort":10254,"name":"metrics","protocol":"TCP"}],"readinessProbe":{"failureThreshold":3,"httpGet":{"path":"/healthz","port":10254,"scheme":"HTTP"},"initialDelaySeconds":10,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":1},"resources":{},"securityContext":{"allowPrivilegeEscalation":true,"capabilities":{"add":["NET_BIND_SERVICE"],"drop":["ALL"]},"runAsUser":101},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","hostNetwork":true,"restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"serviceAccount":"ingress-nginx-ingress","serviceAccountName":"ingress-nginx-ingress","terminationGracePeriodSeconds":60}}}},
+      "revision": 4
+    },
+    {
+      "metadata": {
+        "name": "ingress-nginx-ingress-controller-7bf89648df",
+        "namespace": "ingress",
+        "selfLink": "/apis/apps/v1/namespaces/ingress/controllerrevisions/ingress-nginx-ingress-controller-7bf89648df",
+        "uid": "f7d4832a-f7e6-43d3-8d2e-69c06fe06f3c",
+        "resourceVersion": "23408443",
+        "creationTimestamp": "2020-08-11T16:42:54Z",
+        "labels": {
+          "app": "nginx-ingress",
+          "app.kubernetes.io/component": "controller",
+          "component": "controller",
+          "controller-revision-hash": "7bf89648df",
+          "release": "ingress"
+        },
+        "annotations": {
+          "deprecated.daemonset.template.generation": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"DaemonSet\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"nginx-ingress\",\"app.kubernetes.io/component\":\"controller\",\"chart\":\"nginx-ingress-1.41.2\",\"heritage\":\"Helm\",\"release\":\"ingress\"},\"name\":\"ingress-nginx-ingress-controller\",\"namespace\":\"ingress\"},\"spec\":{\"minReadySeconds\":0,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"app\":\"nginx-ingress\",\"release\":\"ingress\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"nginx-ingress\",\"app.kubernetes.io/component\":\"controller\",\"component\":\"controller\",\"release\":\"ingress\"}},\"spec\":{\"containers\":[{\"args\":[\"/nginx-ingress-controller\",\"--default-backend-service=ingress/ingress-nginx-ingress-default-backend\",\"--election-id=ingress-controller-leader\",\"--ingress-class=nginx\",\"--configmap=ingress/ingress-nginx-ingress-controller\"],\"env\":[{\"name\":\"POD_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.name\"}}},{\"name\":\"POD_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}}],\"image\":\"us.gcr.io/k8s-artifacts-prod/ingress-nginx/controller:v0.34.1\",\"imagePullPolicy\":\"IfNotPresent\",\"livenessProbe\":{\"failureThreshold\":3,\"httpGet\":{\"path\":\"/healthz\",\"port\":10254,\"scheme\":\"HTTP\"},\"initialDelaySeconds\":10,\"periodSeconds\":10,\"successThreshold\":1,\"timeoutSeconds\":1},\"name\":\"nginx-ingress-controller\",\"ports\":[{\"containerPort\":80,\"name\":\"http\",\"protocol\":\"TCP\"},{\"containerPort\":443,\"name\":\"https\",\"protocol\":\"TCP\"},{\"containerPort\":10254,\"name\":\"metrics\",\"protocol\":\"TCP\"}],\"readinessProbe\":{\"failureThreshold\":3,\"httpGet\":{\"path\":\"/healthz\",\"port\":10254,\"scheme\":\"HTTP\"},\"initialDelaySeconds\":10,\"periodSeconds\":10,\"successThreshold\":1,\"timeoutSeconds\":1},\"resources\":{},\"securityContext\":{\"allowPrivilegeEscalation\":true,\"capabilities\":{\"add\":[\"NET_BIND_SERVICE\"],\"drop\":[\"ALL\"]},\"runAsUser\":101}}],\"dnsPolicy\":\"ClusterFirst\",\"hostNetwork\":true,\"serviceAccountName\":\"ingress-nginx-ingress\",\"terminationGracePeriodSeconds\":60}},\"updateStrategy\":{}}}\n"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "DaemonSet",
+            "name": "ingress-nginx-ingress-controller",
+            "uid": "5538a96e-fb21-4e95-9aec-41a3685dec04",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "data": {"spec":{"template":{"$patch":"replace","metadata":{"creationTimestamp":null,"labels":{"app":"nginx-ingress","app.kubernetes.io/component":"controller","component":"controller","release":"ingress"}},"spec":{"containers":[{"args":["/nginx-ingress-controller","--default-backend-service=ingress/ingress-nginx-ingress-default-backend","--election-id=ingress-controller-leader","--ingress-class=nginx","--configmap=ingress/ingress-nginx-ingress-controller"],"env":[{"name":"POD_NAME","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.name"}}},{"name":"POD_NAMESPACE","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.namespace"}}}],"image":"us.gcr.io/k8s-artifacts-prod/ingress-nginx/controller:v0.34.1","imagePullPolicy":"IfNotPresent","livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/healthz","port":10254,"scheme":"HTTP"},"initialDelaySeconds":10,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":1},"name":"nginx-ingress-controller","ports":[{"containerPort":80,"hostPort":80,"name":"http","protocol":"TCP"},{"containerPort":443,"hostPort":443,"name":"https","protocol":"TCP"},{"containerPort":10254,"hostPort":10254,"name":"metrics","protocol":"TCP"}],"readinessProbe":{"failureThreshold":3,"httpGet":{"path":"/healthz","port":10254,"scheme":"HTTP"},"initialDelaySeconds":10,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":1},"resources":{},"securityContext":{"allowPrivilegeEscalation":true,"capabilities":{"add":["NET_BIND_SERVICE"],"drop":["ALL"]},"runAsUser":101},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","hostNetwork":true,"restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"serviceAccount":"ingress-nginx-ingress","serviceAccountName":"ingress-nginx-ingress","terminationGracePeriodSeconds":60}}}},
+      "revision": 6
+    },
+    {
+      "metadata": {
+        "name": "speaker-6f78688bcc",
+        "namespace": "metallb-system",
+        "selfLink": "/apis/apps/v1/namespaces/metallb-system/controllerrevisions/speaker-6f78688bcc",
+        "uid": "8b57bf3c-9d7a-426c-863c-7de2b3dbefac",
+        "resourceVersion": "23710654",
+        "creationTimestamp": "2020-11-05T11:19:44Z",
+        "labels": {
+          "app": "metallb",
+          "component": "speaker",
+          "controller-revision-hash": "6f78688bcc"
+        },
+        "annotations": {
+          "deprecated.daemonset.template.generation": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"DaemonSet\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"metallb\",\"component\":\"speaker\"},\"name\":\"speaker\",\"namespace\":\"metallb-system\"},\"spec\":{\"selector\":{\"matchLabels\":{\"app\":\"metallb\",\"component\":\"speaker\"}},\"template\":{\"metadata\":{\"annotations\":{\"prometheus.io/port\":\"7472\",\"prometheus.io/scrape\":\"true\"},\"labels\":{\"app\":\"metallb\",\"component\":\"speaker\"}},\"spec\":{\"containers\":[{\"args\":[\"--port=7472\",\"--config=config\"],\"env\":[{\"name\":\"METALLB_NODE_NAME\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"spec.nodeName\"}}},{\"name\":\"METALLB_HOST\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"status.hostIP\"}}},{\"name\":\"METALLB_ML_BIND_ADDR\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"status.podIP\"}}},{\"name\":\"METALLB_ML_LABELS\",\"value\":\"app=metallb,component=speaker\"},{\"name\":\"METALLB_ML_NAMESPACE\",\"valueFrom\":{\"fieldRef\":{\"fieldPath\":\"metadata.namespace\"}}},{\"name\":\"METALLB_ML_SECRET_KEY\",\"valueFrom\":{\"secretKeyRef\":{\"key\":\"secretkey\",\"name\":\"memberlist\"}}}],\"image\":\"metallb/speaker:v0.9.4\",\"imagePullPolicy\":\"Always\",\"name\":\"speaker\",\"ports\":[{\"containerPort\":7472,\"name\":\"monitoring\"}],\"resources\":{\"limits\":{\"cpu\":\"100m\",\"memory\":\"100Mi\"}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"add\":[\"NET_ADMIN\",\"NET_RAW\",\"SYS_ADMIN\"],\"drop\":[\"ALL\"]},\"readOnlyRootFilesystem\":true}}],\"hostNetwork\":true,\"nodeSelector\":{\"beta.kubernetes.io/os\":\"linux\"},\"serviceAccountName\":\"speaker\",\"terminationGracePeriodSeconds\":2,\"tolerations\":[{\"effect\":\"NoSchedule\",\"key\":\"node-role.kubernetes.io/master\"}]}}}}\n"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "DaemonSet",
+            "name": "speaker",
+            "uid": "842558e4-b142-4b21-8758-61f589a2988a",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "data": {"spec":{"template":{"$patch":"replace","metadata":{"annotations":{"prometheus.io/port":"7472","prometheus.io/scrape":"true"},"creationTimestamp":null,"labels":{"app":"metallb","component":"speaker"}},"spec":{"containers":[{"args":["--port=7472","--config=config"],"env":[{"name":"METALLB_NODE_NAME","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"spec.nodeName"}}},{"name":"METALLB_HOST","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"status.hostIP"}}},{"name":"METALLB_ML_BIND_ADDR","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"status.podIP"}}},{"name":"METALLB_ML_LABELS","value":"app=metallb,component=speaker"},{"name":"METALLB_ML_NAMESPACE","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"metadata.namespace"}}},{"name":"METALLB_ML_SECRET_KEY","valueFrom":{"secretKeyRef":{"key":"secretkey","name":"memberlist"}}}],"image":"metallb/speaker:v0.9.4","imagePullPolicy":"Always","name":"speaker","ports":[{"containerPort":7472,"hostPort":7472,"name":"monitoring","protocol":"TCP"}],"resources":{"limits":{"cpu":"100m","memory":"100Mi"}},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"add":["NET_ADMIN","NET_RAW","SYS_ADMIN"],"drop":["ALL"]},"readOnlyRootFilesystem":true},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","hostNetwork":true,"nodeSelector":{"beta.kubernetes.io/os":"linux"},"restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"serviceAccount":"speaker","serviceAccountName":"speaker","terminationGracePeriodSeconds":2,"tolerations":[{"effect":"NoSchedule","key":"node-role.kubernetes.io/master"}]}}}},
+      "revision": 1
+    },
+    {
+      "metadata": {
+        "name": "debian2-6d54488f64",
+        "namespace": "test",
+        "selfLink": "/apis/apps/v1/namespaces/test/controllerrevisions/debian2-6d54488f64",
+        "uid": "f3f4f7fe-13ca-462b-bc12-c6ab8381abd0",
+        "resourceVersion": "142109393",
+        "creationTimestamp": "2021-11-29T13:54:41Z",
+        "labels": {
+          "app": "debian2",
+          "controller.kubernetes.io/hash": "6d54488f64"
+        },
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"StatefulSet\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"debian2\"},\"name\":\"debian2\",\"namespace\":\"test\"},\"spec\":{\"replicas\":3,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"app\":\"debian2\"}},\"serviceName\":\"debian2\",\"template\":{\"metadata\":{\"creationTimestamp\":null,\"labels\":{\"app\":\"debian2\"}},\"spec\":{\"containers\":[{\"command\":[\"/bin/sh\",\"-c\",\"while true; do sleep 1; done\"],\"image\":\"debian\",\"imagePullPolicy\":\"Always\",\"name\":\"debian2\",\"resources\":{},\"securityContext\":{\"allowPrivilegeEscalation\":true,\"privileged\":true},\"terminationMessagePath\":\"/dev/termination-log\",\"terminationMessagePolicy\":\"File\"},{\"command\":[\"/bin/sh\",\"-c\",\"while true; do sleep 1; done\"],\"image\":\"debian:buster-slim\",\"imagePullPolicy\":\"Always\",\"name\":\"debian20\",\"resources\":{},\"securityContext\":{\"allowPrivilegeEscalation\":true,\"privileged\":true},\"terminationMessagePath\":\"/dev/termination-log\",\"terminationMessagePolicy\":\"File\",\"volumeMounts\":[{\"mountPath\":\"/opt/conf\",\"name\":\"config-volume\"}]}],\"dnsPolicy\":\"ClusterFirst\",\"restartPolicy\":\"Always\",\"schedulerName\":\"default-scheduler\",\"securityContext\":{},\"volumes\":[{\"configMap\":{\"defaultMode\":420,\"items\":[{\"key\":\"logback.xml\",\"path\":\"logback.xml\"}],\"name\":\"logback-config-api-service\"},\"name\":\"config-volume\"}]}}}}\n"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "name": "debian2",
+            "uid": "83c7851c-1e6f-49f7-bd19-1cdef8a96cc4",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "data": {"spec":{"template":{"$patch":"replace","metadata":{"creationTimestamp":null,"labels":{"app":"debian2"}},"spec":{"containers":[{"command":["/bin/sh","-c","while true; do sleep 1; done"],"image":"debian","imagePullPolicy":"Always","name":"debian2","resources":{},"securityContext":{"allowPrivilegeEscalation":true,"privileged":true},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"},{"command":["/bin/sh","-c","while true; do sleep 1; done"],"image":"debian:buster-slim","imagePullPolicy":"Always","name":"debian20","resources":{},"securityContext":{"allowPrivilegeEscalation":true,"privileged":true},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","volumeMounts":[{"mountPath":"/opt/conf","name":"config-volume"}]}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":30,"volumes":[{"configMap":{"defaultMode":420,"items":[{"key":"logback.xml","path":"logback.xml"}],"name":"logback-config-api-service"},"name":"config-volume"}]}}}},
+      "revision": 3
+    },
+    {
+      "metadata": {
+        "name": "debian2-75dfb8b494",
+        "namespace": "test",
+        "selfLink": "/apis/apps/v1/namespaces/test/controllerrevisions/debian2-75dfb8b494",
+        "uid": "f52a9e67-248e-4532-a823-959db10386da",
+        "resourceVersion": "142106151",
+        "creationTimestamp": "2021-11-29T13:40:17Z",
+        "labels": {
+          "app": "debian2",
+          "controller.kubernetes.io/hash": "75dfb8b494"
+        },
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"StatefulSet\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"debian2\"},\"name\":\"debian2\",\"namespace\":\"test\"},\"spec\":{\"replicas\":3,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"app\":\"debian2\"}},\"serviceName\":\"debian2\",\"template\":{\"metadata\":{\"creationTimestamp\":null,\"labels\":{\"app\":\"debian2\"}},\"spec\":{\"containers\":[{\"command\":[\"/bin/sh\",\"-c\",\"while true; do sleep 1; done\"],\"image\":\"debian\",\"imagePullPolicy\":\"Always\",\"name\":\"debian2\",\"resources\":{},\"securityContext\":{\"allowPrivilegeEscalation\":true,\"privileged\":true},\"terminationMessagePath\":\"/dev/termination-log\",\"terminationMessagePolicy\":\"File\"},{\"command\":[\"/bin/sh\",\"-c\",\"while true; do sleep 1; done\"],\"image\":\"debian-sid\",\"imagePullPolicy\":\"Always\",\"name\":\"debian20\",\"resources\":{},\"securityContext\":{\"allowPrivilegeEscalation\":true,\"privileged\":true},\"terminationMessagePath\":\"/dev/termination-log\",\"terminationMessagePolicy\":\"File\",\"volumeMounts\":[{\"mountPath\":\"/opt/conf\",\"name\":\"config-volume\"}]}],\"dnsPolicy\":\"ClusterFirst\",\"restartPolicy\":\"Always\",\"schedulerName\":\"default-scheduler\",\"securityContext\":{},\"volumes\":[{\"configMap\":{\"defaultMode\":420,\"items\":[{\"key\":\"logback.xml\",\"path\":\"logback.xml\"}],\"name\":\"logback-config-api-service\"},\"name\":\"config-volume\"}]}}}}\n"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "name": "debian2",
+            "uid": "83c7851c-1e6f-49f7-bd19-1cdef8a96cc4",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "data": {"spec":{"template":{"$patch":"replace","metadata":{"creationTimestamp":null,"labels":{"app":"debian2"}},"spec":{"containers":[{"command":["/bin/sh","-c","while true; do sleep 1; done"],"image":"debian","imagePullPolicy":"Always","name":"debian2","resources":{},"securityContext":{"allowPrivilegeEscalation":true,"privileged":true},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"},{"command":["/bin/sh","-c","while true; do sleep 1; done"],"image":"debian-sid","imagePullPolicy":"Always","name":"debian20","resources":{},"securityContext":{"allowPrivilegeEscalation":true,"privileged":true},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","volumeMounts":[{"mountPath":"/opt/conf","name":"config-volume"}]}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":30,"volumes":[{"configMap":{"defaultMode":420,"items":[{"key":"logback.xml","path":"logback.xml"}],"name":"logback-config-api-service"},"name":"config-volume"}]}}}},
+      "revision": 2
+    },
+    {
+      "metadata": {
+        "name": "debian2-f49b86ff5",
+        "namespace": "test",
+        "selfLink": "/apis/apps/v1/namespaces/test/controllerrevisions/debian2-f49b86ff5",
+        "uid": "ee5cb05e-f52a-42b0-a084-6892a2dbb340",
+        "resourceVersion": "142105628",
+        "creationTimestamp": "2021-11-29T13:38:04Z",
+        "labels": {
+          "app": "debian2",
+          "controller.kubernetes.io/hash": "f49b86ff5"
+        },
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"StatefulSet\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"debian2\"},\"name\":\"debian2\",\"namespace\":\"test\"},\"spec\":{\"replicas\":3,\"revisionHistoryLimit\":10,\"selector\":{\"matchLabels\":{\"app\":\"debian2\"}},\"serviceName\":\"debian2\",\"template\":{\"metadata\":{\"creationTimestamp\":null,\"labels\":{\"app\":\"debian2\"}},\"spec\":{\"containers\":[{\"command\":[\"/bin/sh\",\"-c\",\"while true; do sleep 1; done\"],\"image\":\"debian\",\"imagePullPolicy\":\"Always\",\"name\":\"debian2\",\"resources\":{},\"securityContext\":{\"allowPrivilegeEscalation\":true,\"privileged\":true},\"terminationMessagePath\":\"/dev/termination-log\",\"terminationMessagePolicy\":\"File\"},{\"command\":[\"/bin/sh\",\"-c\",\"while true; do sleep 1; done\"],\"image\":\"debian:sid\",\"imagePullPolicy\":\"Always\",\"name\":\"debian20\",\"resources\":{},\"securityContext\":{\"allowPrivilegeEscalation\":true,\"privileged\":true},\"terminationMessagePath\":\"/dev/termination-log\",\"terminationMessagePolicy\":\"File\",\"volumeMounts\":[{\"mountPath\":\"/opt/conf\",\"name\":\"config-volume\"}]}],\"dnsPolicy\":\"ClusterFirst\",\"restartPolicy\":\"Always\",\"schedulerName\":\"default-scheduler\",\"securityContext\":{},\"volumes\":[{\"configMap\":{\"defaultMode\":420,\"items\":[{\"key\":\"logback.xml\",\"path\":\"logback.xml\"}],\"name\":\"logback-config-api-service\"},\"name\":\"config-volume\"}]}}}}\n"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "kind": "StatefulSet",
+            "name": "debian2",
+            "uid": "83c7851c-1e6f-49f7-bd19-1cdef8a96cc4",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "data": {"spec":{"template":{"$patch":"replace","metadata":{"creationTimestamp":null,"labels":{"app":"debian2"}},"spec":{"containers":[{"command":["/bin/sh","-c","while true; do sleep 1; done"],"image":"debian","imagePullPolicy":"Always","name":"debian2","resources":{},"securityContext":{"allowPrivilegeEscalation":true,"privileged":true},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"},{"command":["/bin/sh","-c","while true; do sleep 1; done"],"image":"debian:sid","imagePullPolicy":"Always","name":"debian20","resources":{},"securityContext":{"allowPrivilegeEscalation":true,"privileged":true},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","volumeMounts":[{"mountPath":"/opt/conf","name":"config-volume"}]}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":30,"volumes":[{"configMap":{"defaultMode":420,"items":[{"key":"logback.xml","path":"logback.xml"}],"name":"logback-config-api-service"},"name":"config-volume"}]}}}},
+      "revision": 1
+    }
+  ]
+}

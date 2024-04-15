@@ -1,0 +1,320 @@
+{
+  "kind": "NetworkPolicyList",
+  "apiVersion": "networking.k8s.io/v1",
+  "metadata": {
+    "selfLink": "/apis/networking.k8s.io/v1/networkpolicies",
+    "resourceVersion": "400150672"
+  },
+  "items": [
+    {
+      "metadata": {
+        "name": "argocd-application-controller-network-policy",
+        "namespace": "argocd",
+        "selfLink": "/apis/networking.k8s.io/v1/namespaces/argocd/networkpolicies/argocd-application-controller-network-policy",
+        "uid": "4e16c6c2-f2b8-47fd-b032-e98b0f44e9cc",
+        "resourceVersion": "123202969",
+        "generation": 1,
+        "creationTimestamp": "2021-09-30T07:56:34Z",
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"networking.k8s.io/v1\",\"kind\":\"NetworkPolicy\",\"metadata\":{\"annotations\":{},\"name\":\"argocd-application-controller-network-policy\",\"namespace\":\"argocd\"},\"spec\":{\"ingress\":[{\"from\":[{\"namespaceSelector\":{}}],\"ports\":[{\"port\":8082}]}],\"podSelector\":{\"matchLabels\":{\"app.kubernetes.io/name\":\"argocd-application-controller\"}},\"policyTypes\":[\"Ingress\"]}}\n"
+        }
+      },
+      "spec": {
+        "podSelector": {
+          "matchLabels": {
+            "app.kubernetes.io/name": "argocd-application-controller"
+          }
+        },
+        "ingress": [
+          {
+            "ports": [
+              {
+                "protocol": "TCP",
+                "port": 8082
+              }
+            ],
+            "from": [
+              {
+                "namespaceSelector": {
+                  
+                }
+              }
+            ]
+          }
+        ],
+        "policyTypes": [
+          "Ingress"
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "name": "argocd-dex-server-network-policy",
+        "namespace": "argocd",
+        "selfLink": "/apis/networking.k8s.io/v1/namespaces/argocd/networkpolicies/argocd-dex-server-network-policy",
+        "uid": "fa4b4a9b-5924-42ab-97df-5e78ab64e98e",
+        "resourceVersion": "123202980",
+        "generation": 1,
+        "creationTimestamp": "2021-09-30T07:56:34Z",
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"networking.k8s.io/v1\",\"kind\":\"NetworkPolicy\",\"metadata\":{\"annotations\":{},\"name\":\"argocd-dex-server-network-policy\",\"namespace\":\"argocd\"},\"spec\":{\"ingress\":[{\"from\":[{\"podSelector\":{\"matchLabels\":{\"app.kubernetes.io/name\":\"argocd-server\"}}}],\"ports\":[{\"port\":5556,\"protocol\":\"TCP\"},{\"port\":5557,\"protocol\":\"TCP\"}]},{\"from\":[{\"namespaceSelector\":{}}],\"ports\":[{\"port\":5558,\"protocol\":\"TCP\"}]}],\"podSelector\":{\"matchLabels\":{\"app.kubernetes.io/name\":\"argocd-dex-server\"}},\"policyTypes\":[\"Ingress\"]}}\n"
+        }
+      },
+      "spec": {
+        "podSelector": {
+          "matchLabels": {
+            "app.kubernetes.io/name": "argocd-dex-server"
+          }
+        },
+        "ingress": [
+          {
+            "ports": [
+              {
+                "protocol": "TCP",
+                "port": 5556
+              },
+              {
+                "protocol": "TCP",
+                "port": 5557
+              }
+            ],
+            "from": [
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "app.kubernetes.io/name": "argocd-server"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "ports": [
+              {
+                "protocol": "TCP",
+                "port": 5558
+              }
+            ],
+            "from": [
+              {
+                "namespaceSelector": {
+                  
+                }
+              }
+            ]
+          }
+        ],
+        "policyTypes": [
+          "Ingress"
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "name": "argocd-redis-network-policy",
+        "namespace": "argocd",
+        "selfLink": "/apis/networking.k8s.io/v1/namespaces/argocd/networkpolicies/argocd-redis-network-policy",
+        "uid": "144525fb-5ad0-4c3f-ab96-8cbf6f06b09e",
+        "resourceVersion": "123202991",
+        "generation": 1,
+        "creationTimestamp": "2021-09-30T07:56:34Z",
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"networking.k8s.io/v1\",\"kind\":\"NetworkPolicy\",\"metadata\":{\"annotations\":{},\"name\":\"argocd-redis-network-policy\",\"namespace\":\"argocd\"},\"spec\":{\"ingress\":[{\"from\":[{\"podSelector\":{\"matchLabels\":{\"app.kubernetes.io/name\":\"argocd-server\"}}},{\"podSelector\":{\"matchLabels\":{\"app.kubernetes.io/name\":\"argocd-repo-server\"}}},{\"podSelector\":{\"matchLabels\":{\"app.kubernetes.io/name\":\"argocd-application-controller\"}}}],\"ports\":[{\"port\":6379,\"protocol\":\"TCP\"}]}],\"podSelector\":{\"matchLabels\":{\"app.kubernetes.io/name\":\"argocd-redis\"}},\"policyTypes\":[\"Ingress\"]}}\n"
+        }
+      },
+      "spec": {
+        "podSelector": {
+          "matchLabels": {
+            "app.kubernetes.io/name": "argocd-redis"
+          }
+        },
+        "ingress": [
+          {
+            "ports": [
+              {
+                "protocol": "TCP",
+                "port": 6379
+              }
+            ],
+            "from": [
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "app.kubernetes.io/name": "argocd-server"
+                  }
+                }
+              },
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "app.kubernetes.io/name": "argocd-repo-server"
+                  }
+                }
+              },
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "app.kubernetes.io/name": "argocd-application-controller"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "policyTypes": [
+          "Ingress"
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "name": "argocd-repo-server-network-policy",
+        "namespace": "argocd",
+        "selfLink": "/apis/networking.k8s.io/v1/namespaces/argocd/networkpolicies/argocd-repo-server-network-policy",
+        "uid": "f738abfb-a376-4cda-90c9-ba3f495d1903",
+        "resourceVersion": "123202999",
+        "generation": 1,
+        "creationTimestamp": "2021-09-30T07:56:34Z",
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"networking.k8s.io/v1\",\"kind\":\"NetworkPolicy\",\"metadata\":{\"annotations\":{},\"name\":\"argocd-repo-server-network-policy\",\"namespace\":\"argocd\"},\"spec\":{\"ingress\":[{\"from\":[{\"podSelector\":{\"matchLabels\":{\"app.kubernetes.io/name\":\"argocd-server\"}}},{\"podSelector\":{\"matchLabels\":{\"app.kubernetes.io/name\":\"argocd-application-controller\"}}},{\"podSelector\":{\"matchLabels\":{\"app.kubernetes.io/name\":\"argocd-notifications-controller\"}}}],\"ports\":[{\"port\":8081,\"protocol\":\"TCP\"}]},{\"from\":[{\"namespaceSelector\":{}}],\"ports\":[{\"port\":8084}]}],\"podSelector\":{\"matchLabels\":{\"app.kubernetes.io/name\":\"argocd-repo-server\"}},\"policyTypes\":[\"Ingress\"]}}\n"
+        }
+      },
+      "spec": {
+        "podSelector": {
+          "matchLabels": {
+            "app.kubernetes.io/name": "argocd-repo-server"
+          }
+        },
+        "ingress": [
+          {
+            "ports": [
+              {
+                "protocol": "TCP",
+                "port": 8081
+              }
+            ],
+            "from": [
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "app.kubernetes.io/name": "argocd-server"
+                  }
+                }
+              },
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "app.kubernetes.io/name": "argocd-application-controller"
+                  }
+                }
+              },
+              {
+                "podSelector": {
+                  "matchLabels": {
+                    "app.kubernetes.io/name": "argocd-notifications-controller"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "ports": [
+              {
+                "protocol": "TCP",
+                "port": 8084
+              }
+            ],
+            "from": [
+              {
+                "namespaceSelector": {
+                  
+                }
+              }
+            ]
+          }
+        ],
+        "policyTypes": [
+          "Ingress"
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "name": "argocd-server-network-policy",
+        "namespace": "argocd",
+        "selfLink": "/apis/networking.k8s.io/v1/namespaces/argocd/networkpolicies/argocd-server-network-policy",
+        "uid": "63d7f231-4418-4f97-acbc-2edb9f2a19c6",
+        "resourceVersion": "123203000",
+        "generation": 1,
+        "creationTimestamp": "2021-09-30T07:56:34Z",
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"networking.k8s.io/v1\",\"kind\":\"NetworkPolicy\",\"metadata\":{\"annotations\":{},\"name\":\"argocd-server-network-policy\",\"namespace\":\"argocd\"},\"spec\":{\"ingress\":[{}],\"podSelector\":{\"matchLabels\":{\"app.kubernetes.io/name\":\"argocd-server\"}},\"policyTypes\":[\"Ingress\"]}}\n"
+        }
+      },
+      "spec": {
+        "podSelector": {
+          "matchLabels": {
+            "app.kubernetes.io/name": "argocd-server"
+          }
+        },
+        "ingress": [
+          {
+            
+          }
+        ],
+        "policyTypes": [
+          "Ingress"
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "name": "allow-all-ingress",
+        "namespace": "default",
+        "selfLink": "/apis/networking.k8s.io/v1/namespaces/default/networkpolicies/allow-all-ingress",
+        "uid": "85bff3c5-42ce-42a3-8df0-461a13f2c18a",
+        "resourceVersion": "303931728",
+        "generation": 1,
+        "creationTimestamp": "2023-03-27T11:12:27Z",
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"networking.k8s.io/v1\",\"kind\":\"NetworkPolicy\",\"metadata\":{\"annotations\":{},\"name\":\"allow-all-ingress\",\"namespace\":\"default\"},\"spec\":{\"ingress\":[{}],\"podSelector\":{},\"policyTypes\":[\"Ingress\"]}}\n"
+        }
+      },
+      "spec": {
+        "podSelector": {
+          
+        },
+        "ingress": [
+          {
+            
+          }
+        ],
+        "policyTypes": [
+          "Ingress"
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "name": "default-deny-ingress",
+        "namespace": "default",
+        "selfLink": "/apis/networking.k8s.io/v1/namespaces/default/networkpolicies/default-deny-ingress",
+        "uid": "8e946b08-63c6-4d3c-ba4b-70108a65626f",
+        "resourceVersion": "303910796",
+        "generation": 1,
+        "creationTimestamp": "2023-03-27T09:33:37Z",
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"networking.k8s.io/v1\",\"kind\":\"NetworkPolicy\",\"metadata\":{\"annotations\":{},\"name\":\"default-deny-ingress\",\"namespace\":\"default\"},\"spec\":{\"podSelector\":{},\"policyTypes\":[\"Ingress\"]}}\n"
+        }
+      },
+      "spec": {
+        "podSelector": {
+          
+        },
+        "policyTypes": [
+          "Ingress"
+        ]
+      }
+    }
+  ]
+}

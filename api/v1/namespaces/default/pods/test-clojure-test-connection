@@ -1,0 +1,173 @@
+{
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+        "creationTimestamp": "2024-02-03T00:50:22Z",
+        "generateName": "clojure-7cf55bcc6b-",
+        "labels": {
+            "app.kubernetes.io/instance": "clojure",
+            "app.kubernetes.io/managed-by": "Helm",
+            "app.kubernetes.io/name": "clojure",
+            "app.kubernetes.io/version": "1.16.0",
+            "helm.sh/chart": "clojure-0.0.2",
+            "pod-template-hash": "7cf55bcc6b"
+        },
+        "name": "test-clojure-test-connection",
+        "namespace": "default",
+        "ownerReferences": [
+            {
+                "apiVersion": "apps/v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicaSet",
+                "name": "clojure-7cf55bcc6b",
+                "uid": "a01a4831-6654-4f83-bac4-eaaa9fbe293e"
+            }
+        ],
+        "resourceVersion": "398673683",
+        "selfLink": "/api/v1/namespaces/clojure/pods/clojure-7cf55bcc6b-rq9cp",
+        "uid": "f0bd866b-fc09-4057-945a-44776b738f7c"
+    },
+    "spec": {
+        "containers": [
+            {
+                "image": "registry.xplanet.tech:5000/devops/clojure:0.0.3",
+                "imagePullPolicy": "IfNotPresent",
+                "livenessProbe": {
+                    "failureThreshold": 3,
+                    "httpGet": {
+                        "path": "/",
+                        "port": "http",
+                        "scheme": "HTTP"
+                    },
+                    "periodSeconds": 10,
+                    "successThreshold": 1,
+                    "timeoutSeconds": 1
+                },
+                "name": "clojure",
+                "ports": [
+                    {
+                        "containerPort": 8080,
+                        "name": "http",
+                        "protocol": "TCP"
+                    }
+                ],
+                "readinessProbe": {
+                    "failureThreshold": 3,
+                    "httpGet": {
+                        "path": "/",
+                        "port": "http",
+                        "scheme": "HTTP"
+                    },
+                    "periodSeconds": 10,
+                    "successThreshold": 1,
+                    "timeoutSeconds": 1
+                },
+                "resources": {},
+                "securityContext": {},
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                    {
+                        "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                        "name": "clojure-token-6hdvg",
+                        "readOnly": true
+                    }
+                ]
+            }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "imagePullSecrets": [
+            {
+                "name": "regcred"
+            }
+        ],
+        "nodeName": "kube01.infra.xplanet.ru",
+        "priority": 0,
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "clojure",
+        "serviceAccountName": "clojure",
+        "terminationGracePeriodSeconds": 30,
+        "tolerations": [
+            {
+                "effect": "NoExecute",
+                "key": "node.kubernetes.io/not-ready",
+                "operator": "Exists",
+                "tolerationSeconds": 300
+            },
+            {
+                "effect": "NoExecute",
+                "key": "node.kubernetes.io/unreachable",
+                "operator": "Exists",
+                "tolerationSeconds": 300
+            }
+        ],
+        "volumes": [
+            {
+                "name": "clojure-token-6hdvg",
+                "secret": {
+                    "defaultMode": 420,
+                    "secretName": "clojure-token-6hdvg"
+                }
+            }
+        ]
+    },
+    "status": {
+        "conditions": [
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": "2024-02-03T00:50:22Z",
+                "status": "True",
+                "type": "Initialized"
+            },
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": "2024-02-03T00:50:30Z",
+                "status": "True",
+                "type": "Ready"
+            },
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": "2024-02-03T00:50:30Z",
+                "status": "True",
+                "type": "ContainersReady"
+            },
+            {
+                "lastProbeTime": null,
+                "lastTransitionTime": "2024-02-03T00:50:22Z",
+                "status": "True",
+                "type": "PodScheduled"
+            }
+        ],
+        "containerStatuses": [
+            {
+                "containerID": "containerd://1284fcd3f4142f03d7efa96948939657e4867bc61d12cc90b929abe7411ed244",
+                "image": "registry.xplanet.tech:5000/devops/clojure:0.0.3",
+                "imageID": "registry.xplanet.tech:5000/devops/clojure@sha256:f1b28fcf81f05583c76b85cf9127ee0e93b10c0268c094e06ebf8e54f1d1eb5a",
+                "lastState": {},
+                "name": "clojure",
+                "ready": true,
+                "restartCount": 0,
+                "started": true,
+                "state": {
+                    "running": {
+                        "startedAt": "2024-02-03T00:50:26Z"
+                    }
+                }
+            }
+        ],
+        "hostIP": "10.110.0.151",
+        "phase": "Running",
+        "podIP": "10.150.11.127",
+        "podIPs": [
+            {
+                "ip": "10.150.11.127"
+            }
+        ],
+        "qosClass": "BestEffort",
+        "startTime": "2024-02-03T00:50:22Z"
+    }
+}

@@ -1,0 +1,133 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Node",
+            "metadata": {
+                "annotations": {
+                    "node.alpha.kubernetes.io/ttl": "0",
+                    "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+                },
+                "creationTimestamp": "2023-10-26T05:29:13Z",
+                "labels": {
+                    "beta.kubernetes.io/arch": "amd64",
+                    "beta.kubernetes.io/os": "linux",
+                    "kubernetes.io/arch": "amd64",
+                    "kubernetes.io/hostname": "kubernetes.cluster.local",
+                    "kubernetes.io/os": "linux"
+                },
+                "name": "kubernetes.cluster.local",
+                "resourceVersion": "227282",
+                "uid": "86f92d5a-3970-4964-ab55-24d87bfb53ef"
+            },
+            "spec": {},
+            "status": {
+                "addresses": [
+                    {
+                        "address": "10.15.0.21",
+                        "type": "InternalIP"
+                    },
+                    {
+                        "address": "kubernetes.cluster.local",
+                        "type": "Hostname"
+                    }
+                ],
+                "allocatable": {
+                    "cpu": "12",
+                    "ephemeral-storage": "832443614673",
+                    "hugepages-1Gi": "0",
+                    "hugepages-2Mi": "0",
+                    "memory": "16168544Ki",
+                    "pods": "110"
+                },
+                "capacity": {
+                    "cpu": "12",
+                    "ephemeral-storage": "903259132Ki",
+                    "hugepages-1Gi": "0",
+                    "hugepages-2Mi": "0",
+                    "memory": "16270944Ki",
+                    "pods": "110"
+                },
+                "conditions": [
+                    {
+                        "lastHeartbeatTime": "2023-10-27T22:34:43Z",
+                        "lastTransitionTime": "2023-10-27T06:50:50Z",
+                        "message": "kubelet has sufficient memory available",
+                        "reason": "KubeletHasSufficientMemory",
+                        "status": "False",
+                        "type": "MemoryPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2023-10-27T22:34:43Z",
+                        "lastTransitionTime": "2023-10-27T06:50:50Z",
+                        "message": "kubelet has no disk pressure",
+                        "reason": "KubeletHasNoDiskPressure",
+                        "status": "False",
+                        "type": "DiskPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2023-10-27T22:34:43Z",
+                        "lastTransitionTime": "2023-10-27T06:50:50Z",
+                        "message": "kubelet has sufficient PID available",
+                        "reason": "KubeletHasSufficientPID",
+                        "status": "False",
+                        "type": "PIDPressure"
+                    },
+                    {
+                        "lastHeartbeatTime": "2023-10-27T22:34:43Z",
+                        "lastTransitionTime": "2023-10-27T06:50:50Z",
+                        "message": "kubelet is posting ready status. AppArmor enabled",
+                        "reason": "KubeletReady",
+                        "status": "True",
+                        "type": "Ready"
+                    }
+                ],
+                "daemonEndpoints": {
+                    "kubeletEndpoint": {
+                        "Port": 10250
+                    }
+                },
+                "images": [
+                    {
+                        "names": [
+                            "docker.io/library/nginx@sha256:add4792d930c25dd2abf2ef9ea79de578097a1c175a16ab25814332fe33622de",
+                            "docker.io/library/nginx:latest"
+                        ],
+                        "sizeBytes": 70544605
+                    },
+                    {
+                        "names": [
+                            "docker.io/coredns/coredns@sha256:3e2be1cec87aca0b74b7668bbe8c02964a95a402e45ceb51b2252629d608d03a",
+                            "docker.io/coredns/coredns:1.2.2"
+                        ],
+                        "sizeBytes": 11930000
+                    },
+                    {
+                        "names": [
+                            "registry.k8s.io/pause@sha256:9001185023633d17a2f98ff69b6ff2615b8ea02a825adffa40422f51dfdcde9d",
+                            "registry.k8s.io/pause:3.8"
+                        ],
+                        "sizeBytes": 311286
+                    }
+                ],
+                "nodeInfo": {
+                    "architecture": "amd64",
+                    "bootID": "6ed5dd2b-8a47-4686-bd49-98d26d83102d",
+                    "containerRuntimeVersion": "containerd://1.7.7",
+                    "kernelVersion": "6.1.0-13-amd64",
+                    "kubeProxyVersion": "v1.28.3",
+                    "kubeletVersion": "v1.28.3",
+                    "machineID": "988920b2b2ad41f8a06bca6e3604eb2c",
+                    "operatingSystem": "linux",
+                    "osImage": "Debian GNU/Linux 12 (bookworm)",
+                    "systemUUID": "b663d000-70a9-11ea-8000-ac1f6bf6ea24"
+                }
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
